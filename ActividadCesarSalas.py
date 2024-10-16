@@ -1,3 +1,4 @@
+# Clase Producto
 class Producto:
   def __init__(self, nombre, categoria, precio, cantidad):
     self.__nombre = nombre
@@ -5,7 +6,7 @@ class Producto:
     self.set_precio(precio)
     self.set_cantidad(cantidad)
 
-#Getters
+  # Getters
   def get_nombre(self):
     return self.__nombre
   
@@ -18,7 +19,7 @@ class Producto:
   def get_cantidad(self):
     return self.__cantidad
   
-#Setters
+  # Setters
   def set_precio(self, precio):
     if precio > 0:
       self.__precio = precio
@@ -26,8 +27,15 @@ class Producto:
       raise ValueError("El precio debe ser mayor a 0")
   
   def set_cantidad(self, cantidad):
-    if cantidad > 0:
+    if cantidad >= 0:
       self.__cantidad = cantidad
     else:
-      raise ValueError("La cantidad del producto tiene que ser mayor a 0")
+     raise ValueError("La cantidad del producto tiene que ser mayor o igual a 0")
     
+  # Metodo toString
+  def __str__(self):
+    return f"Producto: {self.__nombre}, Categoria: {self.__categoria}, Precio: {self.__precio}, Cantidad: {self.__cantidad}"
+  
+class Inventario:
+  def __init__(self):
+    self.__producto = []
