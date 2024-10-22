@@ -10,7 +10,7 @@ class Producto:
   def get_nombre(self):
     return self.__nombre
   
-  def get_categorio(self):
+  def get_categoria(self):
     return self.__categoria
   
   def get_precio(self):
@@ -70,12 +70,15 @@ class Inventario:
     def actualizar_producto(self, nombre, precio=None, cantidad=None):
         producto = self.buscar_producto(nombre)
         if producto:
+          try:
             if precio is not None:
                 producto.set_precio(precio)
                 print(f"Precio de {nombre} actualizado a {precio}.")
             if cantidad is not None:
                 producto.set_cantidad(cantidad)
                 print(f"Cantidad de {nombre} actualizada a {cantidad}.")
+          except ValueError as e:
+            print(f"Error al actualizar el producto {e}")
         else:
             print(f"El producto {nombre} no se encuentra en el inventario.")
 
