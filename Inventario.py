@@ -1,41 +1,3 @@
-# Clase Producto
-class Producto:
-  def __init__(self, nombre, categoria, precio, cantidad):
-    self.__nombre = nombre
-    self.__categoria = categoria
-    self.set_precio(precio)
-    self.set_cantidad(cantidad)
-
-  # Getters
-  def get_nombre(self):
-    return self.__nombre
-  
-  def get_categoria(self):
-    return self.__categoria
-  
-  def get_precio(self):
-    return self.__precio
-  
-  def get_cantidad(self):
-    return self.__cantidad
-  
-  # Setters
-  def set_precio(self, precio):
-    if precio > 0:
-      self.__precio = precio
-    else:
-      raise ValueError("El precio debe ser mayor a 0")
-  
-  def set_cantidad(self, cantidad):
-    if cantidad >= 0:
-      self.__cantidad = cantidad
-    else:
-     raise ValueError("La cantidad del producto tiene que ser mayor o igual a 0")
-    
-  # Metodo toString
-  def __str__(self):
-    return f"Producto: {self.__nombre}, Categoria: {self.__categoria}, Precio: {self.__precio}, Cantidad: {self.__cantidad}"
-  
 # Clase Inventario
 class Inventario:
     def __init__(self):
@@ -90,22 +52,3 @@ class Inventario:
           print(producto)
       else:
         print("No hay productos en el inventario.")
-    
-if __name__ == "__main__":
-
-  producto02 = Producto("Laptop", "Electrónica", 1500, 10)  
-  producto03 = Producto("Samsung", "Electrónica", 2000, 100)  
-  producto04 = Producto("Teclado", "Electrónica", 40, 5)
-
-  inventario = Inventario()
-  inventario.mostrar_inventario()
-  inventario.agregar_producto(producto02)
-  inventario.agregar_producto(producto03)  
-  inventario.agregar_producto(producto04)
-  
-  inventario.mostrar_inventario()
-  inventario.actualizar_producto("Laptop", precio=1201, cantidad=20)
-  inventario.eliminar_producto("Samsung")
-  
-  inventario.mostrar_inventario()
-  
