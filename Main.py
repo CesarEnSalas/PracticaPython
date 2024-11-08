@@ -1,21 +1,47 @@
 from Producto import Producto
 from Inventario import Inventario
 
+
+def imprimir_mensaje():
+    print("-" * 30)
+    print("""
+¿Que acción quieres realizar?
+1. Mostrar Inventario
+2. Agregar Producto
+3. Actualizar Producto
+4. Eliminar Producto
+0. Finalizar
+""".strip())
+    print("-" * 30)
+
 if __name__ == "__main__":
 
-  producto02 = Producto("Laptop", "Electrónica", 1500, 10)  
-  producto03 = Producto("Samsung", "Electrónica", 2000, 100)  
-  producto04 = Producto("Teclado", "Electrónica", 40, 5)
+    inventario = Inventario()
 
-  inventario = Inventario()
-  inventario.mostrar_inventario()
-  inventario.agregar_producto(producto02)
-  inventario.agregar_producto(producto03)  
-  inventario.agregar_producto(producto04)
-  
-  inventario.mostrar_inventario()
-  inventario.actualizar_producto("Laptop", precio=1201, cantidad=20)
-  inventario.eliminar_producto("Samsung")
-  
-  inventario.mostrar_inventario()
-  
+    while True:
+        imprimir_mensaje()
+        try:
+            numero = int(input("¿Que acción quieres realizar?: "))
+            print("")
+            if numero == 0:
+                print("Finalizando Programa...")
+                break
+
+            elif numero == 1:
+                inventario.mostrar_inventario()
+
+            elif numero == 2:
+                inventario.datos_producto()
+
+            elif numero == 3:
+                inventario.dato_a_actualizar()
+
+            elif numero == 4:
+                print("¿Que Producto quieres Borrar?")
+                nombre = input("Nombre del Producto: ")
+                inventario.eliminar_producto(nombre)
+
+            else:
+                print("Opción no válida. Intente con los número de la lista.")
+        except ValueError:
+            print("Entrada no válida. Por favor, ingresa un número")
