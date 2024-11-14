@@ -26,21 +26,16 @@ if __name__ == "__main__":
             if numero == 0:
                 print("Finalizando Programa...")
                 break
-
             elif numero == 1:
                 inventario.mostrar_inventario()
-
             elif numero == 2:
-                inventario.datos_producto()
-
+                inventario.agregar_producto()
             elif numero == 3:
-                inventario.dato_a_actualizar()
-
+                inventario.actualizar_producto()
             elif numero == 4:
                 print("¿Que Producto quieres Borrar?")
                 nombre = input("Nombre del Producto: ")
                 inventario.eliminar_producto(nombre)
-
             else:
                 print("Opción no válida. Intente con los número de la lista.")
         except ValueError:
